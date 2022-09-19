@@ -1,10 +1,10 @@
 import pino from 'pino'
 
-export default (service) => {
+export default async (service, opts) => {
     const logger = pino({
-        name: service._opts.name,
+        name: process.env.SERVICE_NAME,
         level: process.env.LOG_LEVEL || 'info'
     })
     logger.debug('Logger is started')
-    return logger
+    await service.decorate(logger, {name: 'logger'})
 }

@@ -2,13 +2,11 @@ import Service from "./lib/service.js"
 import logger from "./plugin/logger.js"
 import mongo from "./plugin/mongo.js"
 
-const service = new Service({
-    name: 'Test Service'
-})
+const service = new Service()
 
-service.addPlugin(logger, 'logger')
-service.addPlugin(mongo, 'mongo')
+service.use(logger)
+service.use(mongo)
 
 await service.start(async (service) => {
-    service.logger.info(`${service.name} is stated`)
+    service.logger.info(`${process.env.SERVICE_NAME} is stated`)
 })

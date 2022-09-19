@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "type": "module",
   "dependencies": {
+    "avvio": "^8.2.0",
     "dotenv": "^16.0.2",
     "mongodb": "^4.9.1",
     "pino": "^8.5.0"
